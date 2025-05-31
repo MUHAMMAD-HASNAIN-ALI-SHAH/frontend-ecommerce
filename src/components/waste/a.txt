@@ -1,0 +1,43 @@
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
+const Hero = () => {
+  return (
+    <div className="w-full flex justify-center bg-blue-800">
+      <div className="w-[1200px] min-h-screen flex items-center justify-center">
+        <Carousel className="relative w-full">
+          <CarouselContent className="w-full">
+            {Array.from({ length: 5 }).map((_, index) => (
+              <CarouselItem
+                key={index}
+                className="w-full basis-full" // important for full width
+              >
+                <div className="p-1 w-full">
+                  <Card className="w-full">
+                    <CardContent className="flex flex-col gap-4 aspect-video items-center justify-center p-6">
+                      <span className="text-4xl font-semibold">
+                        {index + 1}
+                      </span>
+                    </CardContent>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+
+          <CarouselPrevious className="absolute left-[40px] top-1/2 -translate-y-1/2 z-10" />
+          <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 z-10" />
+        </Carousel>
+      </div>
+    </div>
+  );
+};
+
+export default Hero;
