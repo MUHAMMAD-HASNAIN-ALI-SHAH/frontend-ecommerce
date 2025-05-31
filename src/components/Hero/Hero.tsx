@@ -1,7 +1,9 @@
 const Hero = () => {
   return (
-    <div>
-      
+    <div className="w-full flex justify-center shadow-sm">
+      <div className="w-[1200px]">
+        
+      </div>
     </div>
   )
 }
