@@ -1,11 +1,24 @@
 "use client";
-import React from "react";
+
+import * as React from "react";
 import {
   TruckIcon,
   ShieldCheckIcon,
   LockClosedIcon,
+  CreditCardIcon,
+  SparklesIcon,
+  GiftIcon,
 } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
+
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const features = [
   {
@@ -23,31 +36,63 @@ const features = [
     title: "Secure Payment",
     description: "Your payment information is encrypted and secure",
   },
+  {
+    icon: <CreditCardIcon className="h-12 w-12 text-blue-600" />,
+    title: "Easy Checkout",
+    description: "Fast and easy checkout with multiple payment options",
+  },
+  {
+    icon: <SparklesIcon className="h-12 w-12 text-blue-600" />,
+    title: "Exclusive Offers",
+    description: "Members get early access to deals and products",
+  },
+  {
+    icon: <GiftIcon className="h-12 w-12 text-blue-600" />,
+    title: "Gift Packaging",
+    description: "Beautiful gift wrapping options available",
+  },
 ];
 
-const Features = () => {
+export default function Feature() {
   return (
-    <div className="w-full flex justify-center">
-      <div className="w-[1200px] flex items-center">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-10">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className="flex flex-col items-center bg-white p-6 rounded-lg shadow-lg"
-            >
-              <div className="mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-600 text-center">{feature.description}</p>
-            </motion.div>
-          ))}
-        </div>
+    <div className="w-full flex justify-center bg-gray-50 py-10">
+      <div className="w-full max-w-6xl">
+        <Carousel
+          opts={{
+            align: "start",
+          }}
+          className="w-full"
+        >
+          <CarouselContent>
+            {features.map((feature, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-4">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <Card className="h-64 flex items-center justify-center">
+                      <CardContent className="flex flex-col items-center text-center justify-center gap-4 h-full">
+                        {feature.icon}
+                        <h3 className="text-lg font-semibold">
+                          {feature.title}
+                        </h3>
+                        <p className="text-sm text-gray-600">
+                          {feature.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
     </div>
   );
-};
-
-export default Features;
+}

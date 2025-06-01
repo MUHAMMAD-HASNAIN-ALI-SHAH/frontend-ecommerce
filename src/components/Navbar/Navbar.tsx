@@ -1,15 +1,44 @@
+"use client";
+import { useRouter } from "next/navigation";
+
 const Navbar = () => {
+  const router = useRouter();
+
   return (
     <div className="fixed top-0 w-full flex justify-center shadow-sm bg-white z-50">
       <nav className="flex justify-between w-[1200px] py-4">
         <div className="flex items-center gap-5">
-          <h1 className="font-bold text-2xl hover:cursor-pointer text-blue-500">Shopinetic</h1>
+          <h1
+            className="font-bold text-2xl hover:cursor-pointer text-blue-500"
+            onClick={() => router.push("/")}
+          >
+            Shopinetic
+          </h1>
           <ul className="flex gap-5">
-            <li className="text-md text-black/90 hover:text-blue-400 hover:cursor-pointer transition-all">Home</li>
-            <li className="text-md text-black/90 hover:text-blue-400 hover:cursor-pointer transition-all">Products</li>
-            <li className="text-md text-black/90 hover:text-blue-400 hover:cursor-pointer transition-all">Admin</li>
-            <li className="text-md text-black/90 hover:text-blue-400 hover:cursor-pointer transition-all">About</li>
-            <li className="text-md text-black/90 hover:text-blue-400 hover:cursor-pointer transition-all">Contact</li>
+            <li
+              onClick={() => router.push("/")}
+              className="text-md text-black/90 hover:text-blue-400 hover:cursor-pointer transition-all"
+            >
+              Home
+            </li>
+            <li
+              onClick={() => router.push("/products")}
+              className="text-md text-black/90 hover:text-blue-400 hover:cursor-pointer transition-all"
+            >
+              Products
+            </li>
+            <li
+              onClick={() => router.push("/about")}
+              className="text-md text-black/90 hover:text-blue-400 hover:cursor-pointer transition-all"
+            >
+              About
+            </li>
+            <li
+              onClick={() => router.push("/contact")}
+              className="text-md text-black/90 hover:text-blue-400 hover:cursor-pointer transition-all"
+            >
+              Contact
+            </li>
           </ul>
         </div>
         <div className="flex gap-5 font-md text-lg text-black/90">
