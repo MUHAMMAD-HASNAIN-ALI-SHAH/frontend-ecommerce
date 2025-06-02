@@ -39,6 +39,12 @@ const Navbar = () => {
             >
               Contact
             </li>
+            <li
+              onClick={() => router.push("/faqs")}
+              className="text-md text-black/90 hover:text-blue-400 hover:cursor-pointer transition-all"
+            >
+              Faqs
+            </li>
           </ul>
         </div>
         <div className="flex gap-5 font-md text-lg text-black/90">

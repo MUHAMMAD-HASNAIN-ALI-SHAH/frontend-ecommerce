@@ -63,14 +63,14 @@ export default function Feature() {
           }}
           className="w-full"
         >
-          <CarouselContent>
+          <CarouselContent className="my-3">
             {features.map((feature, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                 <div className="p-4">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    transition={{ duration: 0.5 }}
                     viewport={{ once: true }}
                   >
                     <Card className="h-64 flex items-center justify-center">
@@ -89,8 +89,8 @@ export default function Feature() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="top-0 left-[15px]" />
+          <CarouselNext className="top-0 right-[15px]" />
         </Carousel>
       </div>
     </div>
